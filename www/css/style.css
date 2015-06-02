@@ -1,0 +1,102 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700);
+body {
+  background: #C6FFE2;
+  color: white;
+  font-family: 'Roboto';
+  font-weight:'100';
+}
+.wide-as-needed {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.scroll { 
+  min-width: 100%;
+}
+/* .scroll-bar-indicator
+{
+	color:green;
+	display: none;
+} */
+.has-header {
+  color:red;
+}
+.content-bar{
+   position: relative;
+  height: 50px;
+  margin-top:5px;
+  margin-bottom:5px;
+  background: #00ffff;
+  width: auto;
+  color:white;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.search-wrapper-light {
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    background: none;
+    border-radius: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+a.button {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    height: 170px;
+}
+img.fit {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+
+.caption {
+   display:block;    
+   white-space:pre-wrap;
+   line-height: 100%;
+}
+div.slideshow {
+    width: 100%px;
+    height: 100%px;
+}
+a.sliding {
+    width: 100px;
+    height: 60px;
+    background-color: grey;
+}
+img.categorylist{
+    width: 100px;
+    height: 60px;
+    background-color: green;
+}
+
+.fixed-outside{
+  position: absolute;
+  bottom: 0;
+  color:white;
+  width: 100%;
+  height:  140px;
+  text-align:center;
+  
+}
+
+.has-bottom .scroll{
+  padding-bottom:120px !important;
+}
+
+.button-circle {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+   line-height: 100%;
+}
+.lineproperty{
+	opacity: 0.5; 
+	margin-left:5px; 
+	margin-right:5px;
+	border-style: outset;
+    border-color: #98bf21;
+}

@@ -1,0 +1,65 @@
+<ion-view title="Agile Kart">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-android-cart " ></button>
+    <button class="button button-icon ion-more" ng-click="openPopover($event)">
+        </button>
+      </ion-nav-buttons>
+ <ion-content>
+       <div class="content-bar" >
+        <ion-search class="search-wrapper-light" placeholder="Search products" min-length="1"> </ion-search>
+      </div>
+ <ion-slide-box active-slide="myActiveSlide">
+  <ion-slide>
+    <div class="slideshow"><a class="sliding" href="#"><img style="width:100%; height:100%" src="img/t-shirt_slide.jpg"></a></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="slideshow"><a class="sliding" href=""><img style="width:100%; height:100%" src="img/shoes_slide.jpg"></a></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="slideshow"><a class="sliding" href=""><img style="width:100%; height:100%" src="img/watches_slide.jpg"></a></div>
+  </ion-slide>
+</ion-slide-box>
+      <div style="margin-top:8px;"class="bar bar-calm" >
+        <h3>Popular</h3>
+        <button class="pull-right button button-icon icon ion-ios-arrow-right " ></button>
+      </div>
+      <ion-scroll style="margin-top:60px;" direction="x" class="wide-as-needed">
+      <i ng-repeat="blockValue in productsList|orderBy:'productHitCount':true|limitTo:12" >
+        <a href="#/app/product/{{blockValue.akProductCategories.categoryName}}/{{blockValue.productId}}" class="button"><img class="fit" src="{{blockValue.productThumb}}"><span class="caption">{{blockValue.productCartDesc}}</span></a>
+      </i>
+     </ion-scroll>
+      <div style="margin-top:8px;"class="bar bar-calm" >
+        <h3>Specials</h3>
+        <button class="pull-right button button-icon icon ion-ios-arrow-right " ></button>
+      </div>
+      
+      <ion-scroll style="margin-top:60px;"direction="x" class="wide-as-needed">
+        <i ng-repeat="blockValue in productsList|orderBy:'productDiscountPercentage':true|limitTo:12" >
+        <a href="#/app/product/{{blockValue.akProductCategories.categoryName}}/{{blockValue.productId}}" class="button"><img class="fit" src="{{blockValue.productThumb}}"><span class="caption">{{blockValue.productCartDesc}}</span></a>
+      </i>
+     </ion-scroll>
+     
+      <div style="margin-top:8px;"class="bar bar-calm" >
+        <h3>Best Sellers</h3>
+        <button class="pull-right button button-icon icon ion-ios-arrow-right " ></button>
+      </div>
+      
+      <ion-scroll style="margin-top:60px;"direction="x" class="wide-as-needed">
+        <i ng-repeat="blockValue in productsList|orderBy:'productSoldCount':true|limitTo:12" >
+        <a href="#/app/product/{{blockValue.akProductCategories.categoryName}}/{{blockValue.productId}}" class="button"><img class="fit" src="{{blockValue.productThumb}}"><span class="caption">{{blockValue.productCartDesc}}</span></a>
+      </i>
+     </ion-scroll>
+        <div class="list card">
+          <div class="item item-body">
+           <a href="#/app/products/1"><img class="categorylist" style="float: left; width:50%; height:100px" src="img/t-shirts_covers.jpg"></a> 
+            <a href=""> <img class="categorylist" style="float: left; width:50%; height:100px"src="img/shoes_cover.jpg"></a> 
+            <a href=""> <img class="categorylist" style="float: left; width:100%;height:100px;"src="img/watch_cover.jpg"></a> 
+             </div>
+           </div>
+      </ion-content>
+
+     
+</ion-view>
