@@ -13,12 +13,14 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
+      <ion-item nav-clear menu-close href="#/app/home">
+          Home
+      </ion-item>
       <i ng-repeat="productCategory in headerCategories">
         <ion-item nav-clear menu-close href="#/app/category/{{productCategory.categoryName}}">
           {{productCategory.categoryName}}
         </ion-item>
       </i>
-        
       </ion-list>
     </ion-content>
   </ion-side-menu>

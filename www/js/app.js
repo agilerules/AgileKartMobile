@@ -27,7 +27,8 @@ angular.module("agilekartmobile", [ "ionic","ngResource"])
       url: "/category/:categoryName",
       views: {
         'menuContent' :{
-          templateUrl: "views/productCategory.html"
+          templateUrl: "views/productCategory.html",
+          controller: 'categoryCtrl'
         }
       }
     })

@@ -72,7 +72,6 @@ img.categorylist{
     height: 60px;
     background-color: green;
 }
-
 .fixed-outside{
   position: absolute;
   bottom: 0;
@@ -99,4 +98,29 @@ img.categorylist{
 	margin-right:5px;
 	border-style: outset;
     border-color: #98bf21;
+}
+.captioncategory {
+   display:block;    
+   white-space:pre-wrap;
+   line-height: 100%;
+}
+.categorypagelist{
+    width: 50%;
+    float: left;
+    height: 50%;
+   text-align: center;
+}
+div.fit {
+    width: 100%;
+    height: 100%;
+    display:block;    
+   white-space:pre-wrap;
+   line-height: 100%;
+}
+i.optioncheck {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    height: 170px;
 }
