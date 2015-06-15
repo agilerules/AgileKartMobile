@@ -1,0 +1,39 @@
+<ion-view title="Checkout">
+
+  <ion-content>
+  <p id="emptyCartWarning" ng-show="cart.items.length==0" class="alert alert-warning ">Your
+              shopping cart is empty.</p>
+
+  <i ng-show="cart.items.length>0" >
+    <i ng-repeat="item in cart.items | orderBy:'prodName'">
+        <div class="list card">
+          <div class="item item-body">
+            <div class='container2'>
+    <div>
+      <img class='iconDetails' src="{{item.prodImgUrl}}" >
+    </div>  
+  <div style='margin-left:60px;'>
+  <h4 class="captiontext" style='margin-left:40px;'>{{item.prodName}}</h4>
+  <div style="font-size:.6em;margin-left:40px;"> </div>
+  <div style="float:right;font-size:.6em">{{item.prodPrice*item.prodQuantity | currency}}</div>
+  </div>
+</div>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i>
+              Share this product
+            </a>
+          
+            <a class="tab-item" href="#">
+              <i class="icon ion-trash-b"></i>
+              Delete
+            </a>
+          </div>
+
+        </div> 
+      </i>
+        </i>  
+  </ion-content>
+</ion-view>

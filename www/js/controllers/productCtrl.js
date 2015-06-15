@@ -1,13 +1,23 @@
 /**
  * 
  */
-angular.module('agilekartmobile').controller('productCtrl', function($scope, $stateParams,$ionicPopover,AkProductsResource) {
+angular.module('agilekartmobile').controller('productCtrl', function($scope, $stateParams,$ionicLoading,$ionicPopover,AkProductsResource,DataService) {
 	 
 
 	 $scope.category=$stateParams.categoryName;
 	$scope.prodId=$stateParams.productId;
+
+	  $scope.loadingIndicator = $ionicLoading.show({
+				    content: 'Loading Data',
+				    animation: 'fade-in',
+				    showBackdrop: false,
+				    maxWidth: 200,
+				    showDelay: 500
+				});
 	$scope.productList=AkProductsResource.queryAll();
-	var prodlocal=$scope.productList;
+
+	$scope.productList.$promise.then(function(prodlocal){
+		$ionicLoading.hide();
 	$scope.product=function($scope){
 		for(var i=0;i<prodlocal.length;i++){
 			if(prodlocal[i].productId==$stateParams.productId){
@@ -15,6 +25,8 @@ angular.module('agilekartmobile').controller('productCtrl', function($scope, $st
 			}
 		}
 	};
+});
+	$scope.cart = DataService.cart;
 	 $ionicPopover.fromTemplateUrl('template/agilePopOver.html', {
 		    scope: $scope
 		  }).then(function(popover) {

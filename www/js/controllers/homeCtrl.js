@@ -1,6 +1,17 @@
-angular.module('agilekartmobile').controller('homeCtrl', function($scope, $ionicPopover,AkProductsResource) {
-	  $scope.blockData=AkProductsResource.queryAll();
+angular.module('agilekartmobile').controller('homeCtrl', function($scope, $ionicPopover,$ionicLoading,AkProductsResource,DataService) {
+	
+
+	  $scope.loadingIndicator = $ionicLoading.show({
+				    content: 'Loading Data',
+				    animation: 'fade-in',
+				    showBackdrop: false,
+				    maxWidth: 200,
+				    showDelay: 500
+				});
+	  $scope.cart = DataService.cart;
+  $scope.blockData=AkProductsResource.queryAll();
 	  $scope.blockData.$promise.then(function(proList){
+	  $ionicLoading.hide();
 	  $scope.productsList=proList;	
 	  });
 	  $scope.myActiveSlide = 1;

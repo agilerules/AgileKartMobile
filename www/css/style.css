@@ -124,3 +124,20 @@ i.optioncheck {
     width: 120px;
     height: 170px;
 }
+
+.iconDetails {
+ margin-left:2%;
+float:left; 
+height:80px;
+width:80px; 
+} 
+
+.container2 {
+  width:100%;
+  height:auto;
+  padding:1%;
+}
+
+.captiontext{
+    margin:0px;
+}
