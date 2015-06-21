@@ -1,0 +1,38 @@
+<ion-view title="Order Details"> 
+<ion-content >
+        <div class="list card">
+         <div class="item  item-divider">
+           <i>Total amount Payable - {{cart.getTotalPrice()|currency}}
+           </i>
+          </div>        
+          <div class="item  item-divider">
+           <i>Select the Payment Method
+           </i>
+          </div> 
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            Credit card
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios-plus-outline" ></i>
+            </a>      
+          </div> 
+           <div class="item tabs tabs-secondary tabs-icon-left">
+            Net Banking
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios-plus-outline" ></i>
+            </a>      
+          </div> 
+           <div class="item tabs tabs-secondary tabs-icon-left">
+            Cash on Delivery
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios-plus-outline" ></i>
+            </a>      
+          </div> 
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            Debit Card
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios-plus-outline" ></i>
+            </a>      
+          </div> 
+        </div>
+        </ion-content>
+</ion-view>

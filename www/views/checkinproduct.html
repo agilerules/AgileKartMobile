@@ -9,9 +9,9 @@
         <div class="list card">
           <div class="item item-body">
             <div class='container2'>
-    <div>
-      <img class='iconDetails' src="{{item.prodImgUrl}}" >
-    </div>  
+            <div>
+             <img class='iconDetails' src="{{item.prodImgUrl}}" >
+             </div>  
   <div style='margin-left:60px;'>
   <h4 class="captiontext" style='margin-left:40px;'>{{item.prodName}}</h4>
   <div style="font-size:.6em;margin-left:40px;"> </div>
@@ -26,14 +26,27 @@
               Share this product
             </a>
           
-            <a class="tab-item" href="#">
-              <i class="icon ion-trash-b"></i>
-              Delete
+            <a class="tab-item" ng-click="cart.addItem(item.prodId,item.prodName,item.prodPrice,-1000,item.prodImgUrl,item.prodInStock)">
+              <i class="icon ion-trash-b" ></i>
+              Delete 
             </a>
           </div>
-
         </div> 
       </i>
-        </i>  
+        </i> 
+        <div>
+          <hr></hr>
+          <h2>Summary</h2>
+          <table style="width:100%;">
+             <tr>
+                  <td><i style="font-weight: bold; color: black;">Total (Delivery Charges applicable)</i></td>
+                  <td><i style="font-weight: bold;color: red;">Rs : {{cart.getTotalPrice()|currency}} </i></td>
+             </tr>
+           </table>
+           <button class="button button-block button-positive" ui-sref="app.placeorder">
+           Place Order
+           </button>
+           <hr></hr>
+        </div> 
   </ion-content>
 </ion-view>

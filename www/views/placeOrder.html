@@ -1,0 +1,69 @@
+<ion-view title="Order Details"> 
+  <ion-content >
+        <button class="button button-block button-balanced" ui-sref="app.payamount">
+        Proceed to Pay
+        </button>
+        <div class="list card">
+         <div class="item  item-divider">
+           <i>Delivery Address
+           <a href="" style="position: absolute;left:75%">
+          <i class="icon ion-edit"></i>
+          Change
+          </a>
+           </i>
+          </div>        
+          <div class="item item-body">
+           <div class='container2'>
+            		<div>
+            <i style="font-weight: bold;">Leo Messi</i><br />
+           14 Av. Tres-Cents Trenta-Set,<br/>
+           Cataloniabr <br/ >
+           Spain <br/ >
+                  <i style="font-weight: bold;">Ph : 1234567</i><br />
+                   <i style="font-weight: bold;">Email: abc@gmail.com</i>
+            	</div>
+            </div>
+          </div>
+        </div>
+        
+         <div class="list card">
+         <div class="item bar bar-positive item-divider">
+           <i>Order Summary
+           </i>
+          </div>        
+          <div class="item item-body">
+           <div class='container2'>
+             <table style="width:100%;" >
+             <tr>
+                  <td><i style="font-weight: bold;">Poduct </i></td>
+               <td><i style="font-weight: bold;">Quantity </i></td>
+               <td><i style="font-weight: bold;">Delivery Charge</i></td>
+                  <td><i style="font-weight: bold;">Cost </i></td>
+             </tr>
+            		
+             <tr ng-repeat="item in cart.items">
+                  <td>{{item.prodName}}</td>
+                  <td>{{item.prodQuantity}}</td>
+                  <td ng-show="(item.prodPrice*item.prodQuantity)>=30">Free</td>
+                  <td ng-show="(item.prodPrice*item.prodQuantity)<30">50</td>
+                 <td>{{item.prodPrice}}</td>
+             </tr>
+               <tr>
+                  <td style="text-align:center"colspan="3">Total </td>
+                  <td>{{cart.getTotalPrice()|currency}}</td>
+             </tr>
+               </table>
+            </div>
+          </div>
+           <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-edit" ></i>
+              <i style="font-weight: bold;">Edit Order</i>
+            </a>      
+          </div>     
+        </div>
+        <button class="button button-block button-balanced" ui-sref="app.payamount">
+        Proceed to Pay
+        </button>
+      </ion-content >
+</ion-view>

@@ -89,6 +89,25 @@ angular.module("agilekartmobile", [ "ionic","ngResource"])
           controller: 'productCtrl'
         }
       }
+    })
+
+    .state('app.placeorder', {
+      url: "/placeorder",
+      views: {
+        'menuContent' :{
+          templateUrl: "views/placeOrder.html",
+          controller: 'placeOrderCtrl' 
+        }
+      }
+    })
+    .state('app.payamount', {
+      url: "/payamount",
+      views: {
+        'menuContent' :{
+          templateUrl: "views/payAmount.html",
+          controller: 'payAmountCtrl' 
+        }
+      }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
