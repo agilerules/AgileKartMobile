@@ -11,21 +11,28 @@
             <div class='container2'>
             <div>
              <img class='iconDetails' src="{{item.prodImgUrl}}" >
+
              </div>  
+
   <div style='margin-left:60px;'>
-  <h4 class="captiontext" style='margin-left:40px;'>{{item.prodName}}</h4>
+  <h4 class="captiontext" style='margin-left:40px;'>{{item.prodName}}</h4>			 			        
+
   <div style="font-size:.6em;margin-left:40px;"> </div>
-  <div style="float:right;font-size:.6em">{{item.prodPrice*item.prodQuantity | currency}}</div>
   </div>
 </div>
           </div>
-
           <div class="item tabs tabs-secondary tabs-icon-left">
+		            <th class="cart_unit item text-right">Unit price:</th><br/>
+					  <div style="float:right;font-size:.6em">{{item.prodPrice*item.prodQuantity | currency}}</div>
+
+      <hr class="lineproperty">
+
             <a class="tab-item" href="#">
               <i class="icon ion-share"></i>
               Share this product
             </a>
-          
+										
+
             <a class="tab-item" ng-click="cart.addItem(item.prodId,item.prodName,item.prodPrice,-1000,item.prodImgUrl,item.prodInStock)">
               <i class="icon ion-trash-b" ></i>
               Delete 
@@ -36,13 +43,27 @@
         </i> 
         <div>
           <hr></hr>
-          <h2>Summary</h2>
-          <table style="width:100%;">
-             <tr>
-                  <td><i style="font-weight: bold; color: black;">Total (Delivery Charges applicable)</i></td>
-                  <td><i style="font-weight: bold;color: red;">Rs : {{cart.getTotalPrice()|currency}} </i></td>
-             </tr>
-           </table>
+          <table style="width:120%;">
+
+			 <tr class="cart_total_price">
+								<td rowspan="6" colspan="6" id="cart_voucher"
+									class="cart_voucher"></td>
+								<td colspan="40" class="text-right" style="font-weight: bold;color: black;">Total products:</td>
+								<td colspan="18" class="price" style="font-weight: bold;color: black;" id="total_product" >{{cart.getTotalPrice()
+									| currency}}</td>
+							</tr>
+							<tr class="cart_total_delivery">
+								<td colspan="40" class="text-right" style="font-weight: bold;color: black;">Total shipping:</td>
+								<td colspan="18" class="price" style="font-weight: bold;color: black;" id="total_shipping">$7.00</td>
+							</tr>
+							<tr class="cart_total_price">
+								<td colspan="40" class="total_price_container text-right" style="font-weight: bold;color: black;"><span>Total:</span>
+								</td>
+								<td colspan="18" class="price" style="font-weight: bold;color: black;" id="total_price_container"><span
+									id="total_price">{{cart.getTotalPrice()+ 7 | currency}}</span>
+								</td>
+							</tr>
+ </table>
            <button class="button button-block button-positive" ui-sref="app.placeorder">
            Place Order
            </button>

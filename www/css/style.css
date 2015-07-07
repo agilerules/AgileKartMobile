@@ -18,14 +18,14 @@ body {
 	display: none;
 } */
 .has-header {
-  color:red;
+  color:black;
 }
 .content-bar{
    position: relative;
   height: 50px;
   margin-top:5px;
   margin-bottom:5px;
-  background: #00ffff;
+  background: none;
   width: auto;
   color:white;
   font-size: 10px;
@@ -105,9 +105,9 @@ img.categorylist{
    line-height: 100%;
 }
 .categorypagelist{
-    width: 50%;
+    width: 100%;
     float: left;
-    height: 50%;
+    height: 100%;
    text-align: center;
 }
 div.fit {

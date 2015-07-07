@@ -3,7 +3,9 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-android-cart " ui-sref="app.checkprods"></button>
+    <button class="button button-icon icon ion-android-cart " ui-sref="app.checkprods">
+	{{cart.getTotalCount()}}
+	</button>
     <button class="button button-icon ion-more" ng-click="openPopover($event)">
         </button>
       </ion-nav-buttons>
@@ -23,8 +25,12 @@
   </ion-slide>
 </ion-slide-box>
       <div style="margin-top:8px;"class="bar bar-calm" >
+	  
         <h3>Popular</h3>
-        <button class="pull-right button button-icon icon ion-ios-arrow-right " ></button>
+		
+        <button class="pull-right button button-icon icon ion-ios-arrow-right"> </button>
+		
+	
       </div>
       <ion-scroll style="margin-top:60px;" direction="x" class="wide-as-needed">
       <i ng-repeat="blockValue in productsList|orderBy:'productHitCount':true|limitTo:12" >

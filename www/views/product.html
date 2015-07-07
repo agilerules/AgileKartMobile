@@ -1,6 +1,8 @@
 <ion-view title="Product"> 
 <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-android-cart " ui-sref="app.checkprods"></button>
+    <button class="button button-icon icon ion-android-cart " ui-sref="app.checkprods" >
+	
+										{{cart.getTotalCount()}}</button>
     <button class="button button-icon ion-more" ng-click="openPopover($event)">
         </button>
 </ion-nav-buttons>
@@ -14,23 +16,68 @@
 	</div>
 </div>
 <hr class="lineproperty">
+	
 <div style="float: left; width: 50%; padding-left: 20px">
-	<h5>
-		MRP : ${{product().productPrice}}<br /> <i style="font-weight: 900;"></i>
-	</h5>
+ <h5>
+	<div class="content_price" ng-switch on="product().productDiscountPercentage>0">
+	<span class="price product-price" ng-switch-when='true'>${{(product().productPrice-(((product().productPrice*product().productDiscountPercentage))/100)|number:2)|number:2}}</span>
+	<span class="old-price product-price" ng-switch-when='true'>
+					${{product().productPrice}} </span>
+	<span class="price-percent-reduction" ng-switch-when='true'>{{product().productDiscountPercentage}}%</span>
+
+		<span class="price product-price" ng-switch-when='false'>
+												${{product().productPrice}} </span>
+										</div></h5>
+										
+										
 </div>
-<div
-	style="margin-left: 25px; border-left: medium #CC0000 solid; position: absolute; left: 150px; height: 40px;"></div>
-<div style="float: left; width: 50%; padding-left: 20px">
-	<h5>
-		User Rating<br /> Rate
-	</h5>
-</div>
-<br />
+
+<br/>
+<br/>
 <hr class="lineproperty">
+
+<button ng-click="cart.addItem(product().productId,product().productCartDesc,product().productPrice,1,product().productThumb,product().productStock)" 
+		class="button button-square button-balanced icon ion-android-add-circle">
+		Add to cart</button></br></br>
+		<p id="pQuantityAvailable">
+								<span id="quantityAvailable">{{product().productStock}}</span> <span
+									style="display: none; font-weight: bold; color: #363836;" id="quantityAvailableTxt">Item</span> <span
+									id="quantityAvailableTxtMultiple">Items</span>
+							</p>
+
+<p id="availability_status" ng-switch on="product().productStock>0">
+
+			<span class="label label-success" ng-switch-when="true"
+			style="white-space: normal; display: inline-block; padding: 6px 10px; background-color: #55c65e; color: #fff" >Instock</span>	
+		<span class="label label-success" ng-switch-when="false"
+												style="display: inline; border: #d4323d; background-color: #f3515c; color: #fff; font-size:100%; font-weight:bold; line-height:1; ">Out
+												of stock</span>
+										</p>
+								<p class="socialsharing_product list-inline no-print">
+								<button data-type="twitter" type="button"
+									class="btn btn-default btn-twitter social-sharing">
+									<i class="icon ion-twitter"></i> Tweet
+									
+								</button>
+								<button data-type="facebook" type="button"
+									class="btn btn-default btn-facebook social-sharing">
+									<i class="icon ion-facebook"></i> Share
+									
+								</button>
+								<button data-type="google-plus" type="button"
+									class="btn btn-default btn-google-plus social-sharing">
+									<i class="icon ion-google-plus"></i> Google+
+									
+								</button>
+								<button data-type="pinterest" type="button"
+									class="btn btn-default btn-pinterest social-sharing">
+									<i class="icon ion-pinterest"></i> Pinterest
+									
+								</button>
+							</p>
 <div>
 	<h3>Description</h3>
-	<h5>
+	<h5 style="font-color: #fff;">
 		<p>{{product().productLongDesc}}</p>
 	</h5>
 </div>
@@ -38,7 +85,12 @@
 	<h4>Specification</h4>
 	<button class="pull-right button button-icon icon ion-ios-arrow-right "></button>
 </div>
-<div class ="content-bar" style="height: 30px; margin-top:70px;"><h5 style="padding-bottom:15px;"> People who bought this also bought</h5></div>
+<div class ="content-bar" style="margin-top:70px;  background-color: #363836;"><h4 style="padding-bottom:15px; background-color: #363836;"> 
+
+People who bought this also bought</h4></div>
+
+<div class ="content-bar" style=" margin-top:70px;  background-color: #363836;"><h4 style="padding-bottom:15px; background-color: #363836;"> 
+You might also consider</h4></div>
 <ion-scroll style="margin-top:60px;"direction="x" class="wide-as-needed">
         <i ng-repeat="blockValue in productsList|orderBy:'productDiscountPercentage':true|limitTo:12" >
         <a class="button"><img class="fit" src="{{blockValue.productThumb}}"><span class="caption">{{blockValue.productCartDesc}}</span></a>
@@ -46,23 +98,12 @@
      </ion-scroll>
 </ion-content>
 
-<div class="fixed-outside">
-	<div class="row">
-		<div class="col">
-			<button class="button button-circle button-positive">
-				Buy<br /> Now
-			</button>
 
-		</div>
-		<div class="col">
-			<button
-				class="button button-circle button-positive icon ion-android-share-alt"></button>
-		</div>
+
 	</div>
 
-	<button ng-click="cart.addItem(product().productId,product().productCartDesc,product().productPrice,1,product().productThumb,product().productStock)" 
-		class="button button-square button-balanced icon ion-android-add-circle">
-		Add to cart</button>
+	
+		
 </div>
 
 </ion-view>

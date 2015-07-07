@@ -10,8 +10,8 @@
 
           <div class="list" style="width:100%; height:100%">
             <h3>{{optionGroups.akOptionGroups.optionGroupName}}</h3>
-            <i ng-repeat="optionsListThisGroup in optionsListForGroupID(optionGroups.akOptionGroups.optionGroupId)">
-            <ion-checkbox  style=" padding: 0; height:40px">
+            <i ng-repeat="optionsListThisGroup in optionsListForGroupID(optionGroups.akOptionGroups.optionGroupId) ">
+            <ion-checkbox  style=" padding: 0; height:40px" ng-model="flag" ng-change='productIdList(optionGroups.akOptionGroups.optionGroupId,options.optionId,flag)'>
               {{optionsListThisGroup.optionName}}
                </ion-checkbox>
              </i>
@@ -20,13 +20,60 @@
        
       </i>
      </ion-scroll>
-     <button style ="width:100%; height:100%"class="button button-raised button-stable"> Apply filter </button>
+     <button style ="width:100%; height:100%"class="button button-raised button-stable" > Apply filter </button>
           <div class="list card">
-            <i ng-repeat="products in productLocalListForGroup()">
+           <i ng-repeat="products in productLocalListForGroup()">
           <div class="item item-body categorypagelist" >
           <a href="#/app/product/{{products.akProductCategories.categoryName}}/{{products.productId}}"> <img style="width:100%;height:100%;"  src="{{products.productThumb}}"></a> <span class="captioncategory">{{products.productCartDesc}}</span>
+		  <br/>
+		  <button ng-click="cart.addItem(product().productId,product().productCartDesc,product().productPrice,1,product().productThumb,product().productStock)" 
+		class="button button-square button-balanced icon ion-android-add-circle">
+		Add to cart</button>
+		<br/><br/>
+		<div class="content_price" ng-switch on="products.productDiscountPercentage>0">
+	<span class="price product-price" ng-switch-when='true'>${{(products.productPrice-(((products.productPrice*products.productDiscountPercentage))/100)|number:2)|number:2}}</span>
+	<span class="old-price product-price" ng-switch-when='true'>
+					${{products.productPrice}} </span>
+	<span class="price-percent-reduction" ng-switch-when='true'>{{products.productDiscountPercentage}}%</span>
+
+		<span class="price product-price" ng-switch-when='false'>
+												${{products.productPrice}} </span>
+										</div>
+										<p id="pQuantityAvailable">
+								<span id="quantityAvailable">{{products.productStock}}</span> <span
+									style="display: none; font-weight: bold; color: black;" id="quantityAvailableTxt">Item</span> <span
+									id="quantityAvailableTxtMultiple">Items</span>
+							</p>
+							<div>
+							<p id="availability_status" ng-switch on="products.productStock>0">
+
+			<span class="label label-success" ng-switch-when="true"
+			style="white-space: normal; display: inline-block; padding: 6px 10px; background-color: #55c65e; color: #fff" >Instock</span>	
+		<span class="label label-success" ng-switch-when="false"
+												style="display: inline; border: #d4323d; background-color: #f3515c; color: #fff; font-size:100%; font-weight:bold; line-height:1; ">Out
+												of stock</span>
+												
+										</p>
+										<a class="button lnk_view btn btn-default"
+												href="#/app/product/{{products.akProductCategories.categoryName}}/{{products.productId}}"
+												title="View" style="height: 25px; width: 90px;"> <span>More</span>
+											</a>
+											</div>
           </div>   
+		 
         </i>
+		<div class="top-pagination-content clearfix" ng-switch on="noOfProducts>0">
+
+					<!-- Pagination -->
+					<div id="pagination" class="pagination clearfix"></div>
+					<div class="product-count" ng-switch-when='false'>No items
+						found</div>
+					<div class="product-count" ng-switch-when='true'>Showing 1 -
+						{{noOfProducts}} of {{noOfProducts}} items</div>
+					<!-- /Pagination -->
+
+				</div>
           </div>   
+		  
   </ion-content>
 </ion-view>
